@@ -1,0 +1,50 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+}
+
+/* Make the title look like normal text while clickable. */
+.mdl-layout-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Set container for cards to be 80% for responsive design on different form factors */ 
+.mdl-grid {
+	max-width: 80%;
+}
+
+/* Set the width for input fields to be 90% of he edit cards*/
+.mdl-textfield {
+	width: 90% !important;
+}
+
+/* Update background on forms for input card */
+.mdl-form {
+    background-color: #fff;
+    padding: 15px;
+}
+
+/* Overrides the normal right margin to 10px for more space between elements*/
+.mdl-button--accent {
+    margin-right: 10px;
+}
+
+/* Overrides the normal right margin to 10px for more space between elements*/
+.mdl-color--red-500 {
+	margin-right: 10px;
+}
+
+/* Make logged in user profile picture round */
+.profile-picture {
+    border-radius: 40%;
+}
+/* Icon for display next to the facebook login */
+.material-icons {
+	vertical-align: sub
+}

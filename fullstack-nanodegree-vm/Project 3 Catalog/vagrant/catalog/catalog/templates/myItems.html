@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}My Languages{% endblock %}
+{% block content %}
+    {% if items|length == 0 %}
+        <h1>My Languages<small>&nbsp(0 languages)</small></h1>
+    {% else %}
+        {% if items|length > 1 %}
+			<h1>My Languages<small>&nbsp({{ items|length }} languages)</small></h1>
+        {% else %}
+			<h1>My Languages<small>&nbsp(1 language)</small></h1>
+        {% endif %}
+    {% endif %}
+        <div class="mdl-grid-view">
+        {% for item in items %}
+            {% for category in categorys if item.categoryID == category.id %}
+				<div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+					<div class="mdl-card__title">
+						<h2 class="mdl-card__title-text">
+						<a href="{{ url_for('showItem', categoryName=category.name, itemName=item.name) }}">
+						{{ item.name }}
+						</a>
+						</h2>
+					</div>
+					<div class="mdl-card__actions mdl-card--border">
+						{{ item.description }}
+					</div>
+				</div>
+            {% endfor %}
+        {% endfor %}
+{% endblock %}

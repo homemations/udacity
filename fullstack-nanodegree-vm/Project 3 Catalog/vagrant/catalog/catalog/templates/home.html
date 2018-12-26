@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h1>Latest Languages</h1>
+    <div class="mdl-grid">
+    {% for item in latestItems %}
+		{% for category in categorys if item.categoryID == category.id %}
+        <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
+				href="{{ url_for('showItem', categoryName=category.name, itemName=item.name) }}">
+				<h2 class="mdl-card__title-text">{{ item.name }}</h2>
+				</a>
+				<div class="mdl-card__subtitle-text"><em>&nbsp({{ category.name }})</em></div>
+				
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                {{ item.description }}
+            </div>
+        </div>
+        {% endfor %}
+    {% endfor %}
+    </div>
+{% endblock %}

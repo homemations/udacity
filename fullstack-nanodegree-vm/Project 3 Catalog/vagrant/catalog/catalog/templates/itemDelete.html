@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}Delete Language{% endblock %}
+{% block content %}
+    <h1>Delete Language</h1>
+    <div class="mdl-grid mdl-form mdl-shadow--2dp">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <form action="{{ url_for('deleteItem', itemName=item.name) }}" method="post">
+                <h6>Are you sure you want to delete the Language {{ item.name }}?</h6>
+                <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red-500" type="submit" value="Delete">
+                {% for category in categorys if item.categoryID == category.id %}
+                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--grey-300" href="{{ url_for('showItem', categoryName=category.name, itemName=item.name) }}">Cancel</a>
+                {% endfor %}
+            </form>
+{% endblock %}

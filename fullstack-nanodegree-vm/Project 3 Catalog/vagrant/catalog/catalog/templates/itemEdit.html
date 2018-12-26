@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block title %}Edit Language{% endblock %}
+{% block content %}
+    <h1>Edit Language</h1>
+    <div class="mdl-grid mdl-form mdl-shadow--2dp">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <form action="{{ url_for('editItem', itemName=item.name) }}" method="post"  enctype="multipart/form-data">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" name="name" id="name" value="{{ item.name }}" />
+                    <label class="mdl-textfield__label" for="name">Language name</label>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <textarea class="mdl-textfield__input" name="description" rows="3" cols="200" id="description">{{ item.description }}</textarea>
+                    <label class="mdl-textfield__label" for="description">Description</label>
+                </div>
+                <br>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					<select class="mdl-textfield__input" name="category" id="category">
+						{% for category in categorys %}
+						{% if category.id == item.categoryID %}
+						<option value="{{ category.name }}" selected>{{ category.name }}</option>
+						{% else %}
+						<option value="{{ category.name }}">{{ category.name }}</option>
+						{% endif %}
+						{% endfor %}
+					</select>
+					<label class="mdl-textfield__label" for="category">Category</label>
+				</div>
+                <br>
+				<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Save">
+				{% for category in categorys if item.categoryID == category.id %}
+					<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--grey-300 mdl-button-cancel" href="{{ url_for('showItem', categoryName=category.name, itemName=item.name) }}">Cancel</a>
+				{% endfor %}
+                </p>
+            </form>
+        </div>
+    </div>
+    <div class="mdl-grid"></div>
+{% endblock %}

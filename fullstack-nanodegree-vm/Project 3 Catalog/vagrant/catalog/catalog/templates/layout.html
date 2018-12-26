@@ -1,0 +1,90 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - SDL</title>
+
+    <!-- MDL -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mdl/material.min.css') }}">
+    <script src="{{ url_for('static', filename='mdl/material.min.js') }}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block head %}
+    {% endblock head %}
+</head>
+
+<body>
+    <!-- Always shows a header for responsive design screens -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
+        <header class="mdl-layout__header mdl-color--brown-500">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title mdl-layout--large-screen-only"><a href="/">Software Development Languages Reference</a></span>
+                <span class="mdl-layout-title mdl-layout--small-screen-only"><a href="/">Languages</a></span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation">
+					{% if 'username' not in session %}
+                   	<form action="{{ url_for('showLogin') }}">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                            Login
+                        </button>
+                    </form>
+                    {% else %}
+					<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" 
+						href="{{ url_for('createItem') }}">Add Language</a>
+                    <form action="{{ url_for('logout')}}">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--grey-300">
+                            Logout
+                        </button>
+                    </form>
+                    {% endif %}
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Categories</span>
+            <nav class="mdl-navigation">
+                {% for category in categorys %}
+                <a class="mdl-navigation__link" href="{{ url_for('showItems', categoryName=category.name) }}">{{ category.name }}</a>
+                {% endfor %}
+            </nav>
+            <span class="mdl-layout-title">Account</span>
+            <nav class="mdl-navigation">
+                {% if 'username' not in session %}
+                <a class="mdl-navigation__link" href="{{ url_for('showLogin') }}">Login</a>
+                {% else %}
+                <p class="mdl-navigation__link">
+                    <img class="profile-picture" src="{{ session.picture }}" width="25" height="25"/><br>
+                    <strong>{{ session.username }}</strong><br>{{ session.email }}
+                </p>
+                <a class="mdl-navigation__link" href="{{ url_for('showMyItems') }}">My Languages</a>
+                <a class="mdl-navigation__link" href="{{ url_for('logout') }}">Logout</a>
+                {% endif %}
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class="flash_msg mdl-color--red-300">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
