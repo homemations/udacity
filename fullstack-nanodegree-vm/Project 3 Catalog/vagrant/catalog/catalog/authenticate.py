@@ -96,7 +96,7 @@ def fbconnect():
     # Check if the user exists in the database. If not create a new user.
     userID = getUserID(login_session['email'])
     if userID is None:
-        userID = create_user()
+        userID = createUser()
     login_session['userID'] = userID
 
     output = ''
@@ -163,11 +163,10 @@ def logout():
 
 
 def createUser():
-    new_user = User(name=login_session['username'],
-                    email=login_session['email'],
-                    picture=login_session['picture'])
-    session = connect_to_database()
-    session.add(new_user)
+    newUser = User(name=login_session['username'],
+                    email=login_session['email'])
+    session = dbConnect()
+    session.add(newUser)
     session.commit()
     user = session.query(User).filter_by(email=login_session['email']).one()
     session.close()
