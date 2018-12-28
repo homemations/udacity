@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Homemations</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="icon" href="images/homemations_logo.jpg">
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="header__inner">
+				<img class="header__logo" src="images/homemations_logo.jpg" alt="Homemations Company Logo">
+				<h1 class="header__title">Homemations Inc.</h1>
+				<a id="menu" class="header__menu">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
+					</svg>
+				</a>
+			</div>
+		</header>
+
+		<nav id="drawer" class="nav">
+			<ul class="nav__list">
+				<li class="nav__item"><a href="#">News</a></li>
+				<li class="nav__item"><a href="#">Events</a></li>
+				<li class="nav__item"><a href="#">Culture</a></li>
+				<li class="nav__item"><a href="#">Blog</a></li>
+			</ul>
+		</nav>
+
+		<main>
+			<section class="content">
+				<section class="hero">
+					<article class="description">
+						<h2>Specializing in Home Automation Systems</h2>
+						<p>Full Service design, development, integration and implementation using the latest technology to provide a full customized solution that best fits your home automation needs.</p>
+					</article>
+				</section>
+
+				<section class="homemations displayed">
+					<a href="https://www.homemations.com/" target="homemations">
+						<figure class="displayed">
+							<img src="images/homemations.jpg" alt="Homemations main site">
+							<figcaption>Homemations main site</figcaption>
+						</figure>
+					</a>
+				</section>
+
+				<section class="radiora displayed">
+					<a href="https://github.com/homemations/SmartThings/tree/master/Lutron%20RadioRA" target="_blank">
+						<figure class="displayed">
+							<img src="images/radiora.jpg" alt="RadioRA Smartthings Integration solution">
+							<figcaption>Lutron RadioRA Smartthings Integration</figcaption>
+						</figure>
+					</a>
+				</section>
+
+				<section class="ispyconnect displayed">
+					<a href="https://github.com/homemations/SmartThings/tree/master/iSpyConnect" target="_blank">
+						<figure class="displayed">
+							<img src="images/arlo.jpg" alt="Ispy Connect Smartthings Integration solution">
+							<figcaption>Ispy Connect Smartthings Integration</figcaption>
+						</figure>
+					</a>
+				</section>
+			</section>
+			
+			<footer>
+				<section class="footer_section">
+					<ul>
+						<li>
+							<a href="#"><img src="images/contact-icon.png" alt="Contact us"></a>
+						</li>
+						<li>
+							<a href="#"><img src="images/twitter-icon.png" alt="Follow us on Twitter"></a>
+						</li>
+						<li>
+							<a href="#"><img src="images/fb-icon.png" alt="Follow us on Facebook"></a>
+						</li>
+					</ul>
+				</section>
+			</footer>
+		</main>
+		
+		<script>
+			/* Open the drawer when the menu ison is clicked. */
+			var menu = document.querySelector('#menu');
+			var main = document.querySelector('main');
+			var drawer = document.querySelector('.nav');
+
+			menu.addEventListener('click', function(e) {
+				drawer.classList.toggle('open');
+				e.stopPropagation();
+			});
+			
+			main.addEventListener('click', function() {
+				drawer.classList.remove('open');
+			});
+		</script>
+	</body>
+</html>

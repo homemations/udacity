@@ -1,0 +1,288 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-family: 'Exo 2', sans-serif;
+	font-size: 12px;
+	color: #424242;
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 0;
+}
+
+header, nav, footer, section, article, div {
+	box-sizing: border-box;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Common */
+
+.displayed {
+	width: 256px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Header */
+
+.header {
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+	min-height: 56px;
+	transition: min-height 0.3s;
+}
+
+.header__inner {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.header__logo {
+	height: 72px;
+	margin-right: 1em;
+	vertical-align: top;
+	margin-top: 12px;
+}
+
+.header__title {
+	font-weight: 300;
+	font-size: 4em;
+	margin: 0.5em 0.25em;
+	display: inline-block;
+	color: #212121;
+}
+
+/* Top Level Navigation */
+
+.nav {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.nav__list {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.nav__item {
+	box-sizing: border-box;
+	display: inline-block;
+	width: 24%;
+	text-align: center;
+	line-height: 24px;
+	padding: 24px;
+	text-transform: uppercase;
+}
+
+.nav a {
+	text-decoration: none;
+	color: #616161;
+	padding: 1.5em;
+}
+
+.nav a:hover {
+	text-decoration: underline;
+	color: #212121;
+}
+
+/* Main */
+main {
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+}
+
+/* Hero section */
+.hero {
+	width: 100%;
+	position: relative;
+	background-image: url("../images/homemations_bg.jpg");
+	background-size: cover;
+	height: 330px;
+}
+
+.hero article {
+	box-sizing: border-box;
+	box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.25);
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	bottom: 0;
+	height: 25%;
+	width: 100%;
+	color: #fff;
+	padding: 1em;
+}
+
+/* Homemations section */
+.homemations {
+	width: 100%;
+}
+
+/* Lutron RadioRA section */
+.radiora {
+	width: 100%;
+}
+
+/* Ispyconnect section  */
+.ispyconnect {
+	width: 100%;
+}
+
+/* Footer */
+footer {
+	border-top: 1px solid #E0E0E0;
+	padding: 1em;
+	width: 100%;
+}
+
+footer li {
+	display: inline-block;
+	margin: 0 1em;
+}
+
+footer a {
+	text-decoration: none;
+	color: #333;
+	padding: 1.5em;
+}
+
+.footer_section{
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.header__menu {
+	display: none;
+}
+
+.hero, .homemations, .radiora, .ispyconnect{
+	order: 10;
+}
+
+@media screen and (max-width: 390px) {
+	main, .header__inner, .nav, .content {
+		width: 390px;
+	}
+}
+
+@media screen and (max-width: 549px) {
+	.header__logo {
+		height: 48px;
+		margin-right: 0.5em;
+	}
+	
+	.header__title {
+		margin-left: 0;
+		font-size: 2em;
+		vertical-align: bottom; 
+	}
+	
+	.nav {
+		z-index: 10;
+		background-color: #fff;
+		width: 300px;
+		position: absolute;
+		
+		/* This trasform moves the drawer off canvas. */
+		-webkit-transform: translate(-300px, 0);
+		transform: translate(-300px, 0);
+		
+		/* Optionally, we animate the drawer. */
+		transition: transform 0.3s ease;
+	}
+	
+	.nav.open {
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+	}
+	
+	.nav__item {
+		display: list-item;
+		border-bottom: 1px solid #E0E0E0;
+		width: 100%;
+		text-align: left;
+	}
+	
+	.header__menu {
+		display: inline-block;
+		position: absolute;
+		right: 0;
+		padding: 1em;
+	}
+	
+	.header__menu svg {
+		width: 32px;
+		fill: #E0E0E0;
+	}
+	
+	.hero article {
+		height: 35%;
+	}
+}
+
+@media screen and (min-width: 700px) and (max-width: 975px) {
+	.hero {
+		order: 0;
+		width: 100%;
+	}
+	
+	.homemations {
+		order: 1;
+		width: 50%;
+	}
+	
+	.radiora {
+		order: 2;
+		width: 50%;
+	}
+	
+	.ispyconnect {
+		order: 3;
+		width: 100%
+	}
+}
+
+@media screen and (min-width: 976px) {
+	main, .header__inner, .nav, .content {
+		width: 975px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.hero {
+		order: 0;
+		width: 100%;
+	}
+	
+	.homemations {
+		order: 1;
+		width: 33%;
+	}
+	
+	.radiora {
+		order: 2;
+		width: 33%;
+	}
+	
+	.ispyconnect {
+		order: 3;
+		width: 33%
+	}
+}
