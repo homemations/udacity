@@ -34,7 +34,7 @@ This project consists for the following files in the `catalog` directory:
 
 * `README.md` - This file.
 * `application.py` - The main entry point for the solution.
-* `fb_client_secrets.json` - Client secrets for Facebook OAuth login.
+* `fbClientSecrets.json` - Client secrets for Facebook OAuth login.
 * `/catalog` - Directory containing the `catalog` package.
     * `/static` - Directory containing CSS and Javascript for the website.
         Includes a copy of the [Material Design Lite](http://www.getmdl.io/)
